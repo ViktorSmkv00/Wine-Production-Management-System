@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.StorageRegisterGrapeSceneController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="5.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="407.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" prefHeight="16.0" prefWidth="263.0" text="Register Sort of Grape" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="20.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="rb_white" layoutX="137.0" layoutY="106.0" mnemonicParsing="false" text="White">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="category" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="rb_black" layoutX="137.0" layoutY="148.0" mnemonicParsing="false" text="Black" toggleGroup="$category">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </RadioButton>
+                <Label layoutX="42.0" layoutY="131.0" prefHeight="21.0" prefWidth="76.0" text="Category :" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="124.0" layoutY="213.0" prefHeight="21.0" prefWidth="53.0" text="Name :" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_sortName" layoutX="185.0" layoutY="211.0" promptText="Sort name">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="67.0" layoutY="245.0" text="Amount Liquid :" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_amountLiquid" layoutX="185.0" layoutY="240.0" promptText="Amount Liquid">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="42.0" layoutY="276.0" text="Available Quantity :" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_availableQuantity" layoutX="185.0" layoutY="271.0" promptText="Available Quantity">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="button_addSortGrape" layoutX="215.0" layoutY="351.0" mnemonicParsing="false" text="Add to Sort of Grapes">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_back" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" text="Back">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Label fx:id="label_result" alignment="CENTER" layoutX="2.0" layoutY="49.0" prefHeight="50.0" prefWidth="398.0" textAlignment="CENTER" textFill="#0011ff" wrapText="true">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Actor --> Login: initialize
+LoginController --> Admin: Log in as Admin
+Admin --> AdminService
+LoginController --> Operator: Log in as operator
+Operator --> OperatorService
+LoginController --> Host: Log in as Host
+Host --> HostService
+
+
+@enduml

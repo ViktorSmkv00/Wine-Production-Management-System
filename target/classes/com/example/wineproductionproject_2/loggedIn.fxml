@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.LoggedInSceneController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="5.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="405.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label fx:id="label_welcome" alignment="CENTER" layoutX="4.0" layoutY="46.0" prefHeight="21.0" prefWidth="395.0" text="Welcome, bugg">
+                    <font>
+                        <Font name="Marlett" size="20.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_createUser" alignment="CENTER" disable="true" layoutX="139.0" layoutY="169.0" mnemonicParsing="false" opacity="0.0" prefHeight="24.0" prefWidth="134.0" text="Create User">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_regGrape" disable="true" layoutX="202.0" layoutY="161.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" text="Register Grape Variety">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_regBottle" disable="true" layoutX="14.0" layoutY="161.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #00FFFF;" text="Register Bottle Type">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_updateGrape" disable="true" layoutX="202.0" layoutY="214.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" text="Update Grape Variety">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_updateBottle" disable="true" layoutX="14.0" layoutY="214.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #00FFFF;" text="Update Bottle Type">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_deleteBottle" disable="true" layoutX="14.0" layoutY="267.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #00FFFF;" text="Delete Bottle Type">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_deleteGrape" disable="true" layoutX="202.0" layoutY="267.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" text="Delete Grape Variety">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_logout" layoutX="14.0" layoutY="84.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #FF0000;" text="Logout">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_regWineType" disable="true" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #00FFFF;" text="Register Wine Type">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_regWineRecipe" disable="true" layoutX="202.0" layoutY="142.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" text="Register Wine Recipe">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_deleteWineType" disable="true" layoutX="14.0" layoutY="259.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #00FFFF;" text="Delete Wine Type">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_deleteWineRecipe" disable="true" layoutX="202.0" layoutY="259.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" text="Delete Wine Recipe">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_updateWineRecipe" disable="true" layoutX="202.0" layoutY="200.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" text="Update Wine Recipe">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_produceWine" disable="true" layoutX="14.0" layoutY="312.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #00FF00;" text="Produce Wine">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_bottleWine" disable="true" layoutX="202.0" layoutY="312.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #ffe4c4;" text="Bottle Wine">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_updateWineType" disable="true" layoutX="14.0" layoutY="200.0" mnemonicParsing="false" opacity="0.0" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #00FFFF;" text="Update Wine Type">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_checkAvailability" layoutX="202.0" layoutY="84.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #FFFF00;" text="Check Availability of Stock">
+                    <font>
+                        <Font name="Marlett" size="13.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

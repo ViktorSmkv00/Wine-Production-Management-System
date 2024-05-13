@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.StorageDeleteBottleSceneController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../logo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label layoutX="127.0" layoutY="14.0" text="Delete Bottle Type" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="label_result" alignment="CENTER" layoutX="-1.0" layoutY="79.0" prefHeight="71.0" prefWidth="400.0" textAlignment="CENTER" textFill="#1e00ff" wrapText="true">
+                    <font>
+                        <Font name="Marlett" size="18.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="110.0" layoutY="181.0" prefHeight="19.0" prefWidth="194.0" text="Delete Bottle Type:" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="18.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="choiceBox_bottleTypes" layoutX="132.0" layoutY="217.0" prefWidth="150.0" />
+                <Button fx:id="button_delete" layoutX="233.0" layoutY="360.0" mnemonicParsing="false" text="Delete Bottle Type">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_back" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Back">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

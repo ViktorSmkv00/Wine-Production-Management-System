@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.StorageRegisterBottleSceneController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="197.0" style="-fx-background-color: #f8f8ff;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="3.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="410.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label alignment="CENTER" layoutX="70.0" layoutY="14.0" prefHeight="16.0" prefWidth="263.0" text="Register Bottle Type" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="20.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="rb_750" layoutX="165.0" layoutY="127.0" mnemonicParsing="false" text="750ml">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                    <toggleGroup>
+                        <ToggleGroup fx:id="capacity" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="rb_200" layoutX="165.0" layoutY="159.0" mnemonicParsing="false" text="200ml" toggleGroup="$capacity">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </RadioButton>
+                <Label layoutX="72.0" layoutY="138.0" prefHeight="21.0" prefWidth="70.0" text="Capacity :" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="15.0" />
+                    </font>
+                </Label>
+                <Label layoutX="42.0" layoutY="240.0" text="Available Quantity :" textAlignment="CENTER">
+                    <font>
+                        <Font name="Marlett" size="15.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_availableQuantity" layoutX="187.0" layoutY="236.0" promptText="Available Quantity">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="button_addBottleType" layoutX="250.0" layoutY="351.0" mnemonicParsing="false" text="Add Bottle Type">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_back" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" text="Back">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Label fx:id="label_result" alignment="CENTER" layoutX="2.0" layoutY="46.0" prefHeight="63.0" prefWidth="398.0" textAlignment="CENTER" textFill="#0011ff" wrapText="true">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="rb_375" layoutX="252.0" layoutY="127.0" mnemonicParsing="false" text="375ml" toggleGroup="$capacity">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="rb_187" layoutX="252.0" layoutY="159.0" mnemonicParsing="false" text="187ml" toggleGroup="$capacity">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </RadioButton>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

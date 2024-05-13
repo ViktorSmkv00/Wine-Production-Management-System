@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.UserCheckStockAvailabilitySceneController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="6.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label layoutX="134.0" layoutY="14.0" text="Stock Availability">
+                    <font>
+                        <Font name="Marlett" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="label_result" alignment="CENTER" layoutY="37.0" prefHeight="66.0" prefWidth="400.0" textFill="#0037ff">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Label>
+                <RadioButton fx:id="rb_grapeVariety" layoutX="14.0" layoutY="103.0" mnemonicParsing="false" text="Grape Variety">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="check" />
+                    </toggleGroup>
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="rb_bottleType" layoutX="153.0" layoutY="103.0" mnemonicParsing="false" text="Bottle Type" toggleGroup="$check">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </RadioButton>
+                <RadioButton fx:id="rb_bottledWine" layoutX="280.0" layoutY="103.0" mnemonicParsing="false" text="Bottled Wine" toggleGroup="$check">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </RadioButton>
+                <ChoiceBox fx:id="cb_grapeVariety" layoutX="14.0" layoutY="140.0" prefHeight="25.0" prefWidth="109.0" />
+                <ChoiceBox fx:id="cb_bottleType" layoutX="146.0" layoutY="140.0" prefHeight="25.0" prefWidth="109.0" />
+                <ChoiceBox fx:id="cb_bottledWine" layoutX="279.0" layoutY="140.0" prefHeight="25.0" prefWidth="109.0" />
+                <ListView fx:id="lv_result" layoutX="59.0" layoutY="212.0" prefHeight="143.0" prefWidth="283.0" />
+                <DatePicker fx:id="dp_date" layoutX="153.0" layoutY="176.0" promptText="Pick a Date" />
+                <Label layoutX="82.0" layoutY="180.0" text="On Date:">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <Button fx:id="button_check" layoutX="240.0" layoutY="360.0" mnemonicParsing="false" text="Check Availability">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_back" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Back">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

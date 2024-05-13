@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.StorageUpdateGrapeSceneController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="425.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label layoutX="104.0" layoutY="14.0" text="Update Variety of Grape">
+                    <font>
+                        <Font name="Marlett" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="label_result" alignment="CENTER" layoutX="12.0" layoutY="50.0" prefHeight="51.0" prefWidth="390.0" textAlignment="CENTER" textFill="#0009ff" wrapText="true">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="113.0" layoutY="103.0" prefHeight="19.0" prefWidth="188.0" text="Choose Variety to Update:">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <Label layoutX="17.0" layoutY="177.0" prefHeight="19.0" prefWidth="174.0" text="Quantity to add/remove">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_qty" layoutX="197.0" layoutY="169.0" prefHeight="35.0" prefWidth="200.0" promptText="Positive or Negative Number">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <Label layoutX="66.0" layoutY="220.0" prefHeight="19.0" prefWidth="126.0" text="Amount of Liquid">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_amountLiquid" layoutX="197.0" layoutY="212.0" prefHeight="35.0" prefWidth="200.0" promptText="Positive Number">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </TextField>
+                <DatePicker fx:id="datePicker_date" disable="true" layoutX="120.0" layoutY="282.0" promptText="Pick new date" />
+                <Button fx:id="button_back" layoutX="14.0" layoutY="356.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Back">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_update" layoutX="197.0" layoutY="356.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="200.0" text="Update Variety of Grape">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+                <ChoiceBox fx:id="cb_grapeVariety" layoutX="132.0" layoutY="130.0" prefWidth="150.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

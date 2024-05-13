@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.WineOperatorUpdateWineTypeSceneController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="5.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="407.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label alignment="CENTER" layoutX="129.0" layoutY="14.0" text="Update Wine Type">
+                    <font>
+                        <Font name="Marlett" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="label_result" alignment="CENTER" layoutY="58.0" prefHeight="81.0" prefWidth="404.0" textFill="#0095ff">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="142.0" layoutY="150.0" text="Wine Type Name">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="cb_wineType" layoutX="128.0" layoutY="175.0" prefWidth="150.0" />
+                <Button fx:id="button_back" layoutX="14.0" layoutY="351.0" mnemonicParsing="false" text="Back">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_update" layoutX="316.0" layoutY="351.0" mnemonicParsing="false" text="Update">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Label alignment="CENTER" layoutX="14.0" layoutY="236.0" text="Wine Type Obtained Quantity">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_qty" layoutX="235.0" layoutY="232.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

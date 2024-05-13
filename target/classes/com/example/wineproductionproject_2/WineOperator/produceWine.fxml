@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.wineproductionproject_2.WineOperatorProduceWineSceneController">
+    <children>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f8f8ff;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="3.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../logo.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="409.0" style="-fx-background-color: #f8f8ff;">
+            <children>
+                <Label layoutX="148.0" layoutY="14.0" text="Produce Wine">
+                    <font>
+                        <Font name="Marlett" size="18.0" />
+                    </font>
+                </Label>
+                <Label fx:id="label_result" alignment="CENTER" layoutX="1.0" layoutY="49.0" prefHeight="77.0" prefWidth="405.0" textFill="#0055ff" wrapText="true">
+                    <font>
+                        <Font name="Marlett" size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="160.0" layoutY="126.0" text="Wine Recipe">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="cb_recipe" layoutX="128.0" layoutY="153.0" prefWidth="150.0" />
+                <Label layoutX="40.0" layoutY="220.0" text="Number Of Doses">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="tf_doses" layoutX="174.0" layoutY="216.0" promptText="Integer Number" />
+                <Button fx:id="button_back" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" text="Back">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="button_produce" layoutX="313.0" layoutY="360.0" mnemonicParsing="false" text="Produce">
+                    <font>
+                        <Font name="Marlett" size="16.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>
