@@ -2,7 +2,7 @@
 
 
 ## Description
-The project represents an information system for organizing the production of various types of wine. The system is designed to serve administrators, operators (winemakers), and warehouse hosts, providing various functionalities for them.
+Java application with a user-friendly UI desing which helps to serve administrators, operators (winemakers), and warehouse hosts, providing various functionalities for them. 
 
 ## Participants
 - **Administrator**: Primary user responsible for system management and user creation.
