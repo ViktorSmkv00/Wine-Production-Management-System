@@ -7,8 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 import java.net.URL;
 import java.sql.SQLException;

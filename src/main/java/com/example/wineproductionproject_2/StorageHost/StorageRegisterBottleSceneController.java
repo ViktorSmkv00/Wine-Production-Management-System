@@ -1,5 +1,7 @@
-package com.example.wineproductionproject_2;
+package com.example.wineproductionproject_2.StorageHost;
 
+import com.example.wineproductionproject_2.DBManager;
+import com.example.wineproductionproject_2.WineLogger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,9 +10,7 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class StorageRegisterBottleSceneController implements Initializable {

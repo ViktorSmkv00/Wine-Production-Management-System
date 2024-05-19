@@ -1,5 +1,7 @@
-package com.example.wineproductionproject_2;
+package com.example.wineproductionproject_2.WineOperator;
 
+import com.example.wineproductionproject_2.DBManager;
+import com.example.wineproductionproject_2.WineLogger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,7 +14,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class WineOperatorDeleteWineRecipeSceneController implements Initializable {
+public class WineOperatorDeleteWineTypeSceneController implements Initializable {
     @FXML
     private Button button_back, button_delete;
 
@@ -43,7 +45,7 @@ public class WineOperatorDeleteWineRecipeSceneController implements Initializabl
                     return;
                 }
                 try {
-                    String result = DBManager.getInstance().deleteWineRecipe(cb_wineType.getValue());
+                    String result = DBManager.getInstance().deleteWineType(cb_wineType.getValue());
                     WineLogger.getLOGGER().info(result);
                     label_result.setText(result);
                     prepareChoiceBoxWineOptions(cb_wineType);
@@ -53,9 +55,11 @@ public class WineOperatorDeleteWineRecipeSceneController implements Initializabl
             }
         });
     }
+
     private void prepareChoiceBoxWineOptions(ChoiceBox<String> cb) {
         try {
             cb.getItems().clear();
+            cb.getItems().addAll(DBManager.getInstance().getWineTypesWithNoRecipe());
             cb.getItems().addAll(DBManager.getInstance().getWineTypesWithRecipe());
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

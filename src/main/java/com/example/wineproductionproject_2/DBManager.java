@@ -22,10 +22,10 @@ import java.util.Date;
 public class DBManager {
     private final Connection connection;
     private User currentUser;
-    protected final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
+    public final DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy.MM.dd HH:mm:ss");
     protected final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
 
-    protected User getCurrentUser() {
+    public User getCurrentUser() {
         return currentUser;
     }
 
@@ -104,11 +104,11 @@ public class DBManager {
         }
     }
 
-    protected void logout() {
+    public void logout() {
         currentUser = null;
     }
 
-    protected User login(String name, String password) throws SQLException {
+    public User login(String name, String password) throws SQLException {
         Statement stmnt = connection.createStatement();
         ResultSet rs = stmnt.executeQuery("select * from user where name = '" + name + "' and password='" + password + "';");
 
@@ -119,11 +119,11 @@ public class DBManager {
         return currentUser;
     }
 
-    protected static DBManager getInstance() throws SQLException, ClassNotFoundException {
+    public static DBManager getInstance() throws SQLException, ClassNotFoundException {
         return new DBManager("jdbc:mysql://localhost:3306", "root", "viktor123");
     }
 
-    protected static void changeScene(ActionEvent event, String fxmlFile, String title, User user) {
+    public static void changeScene(ActionEvent event, String fxmlFile, String title, User user) {
         Parent root = null;
         try {
             FXMLLoader loader = new FXMLLoader(DBManager.class.getResource(fxmlFile));
@@ -140,7 +140,7 @@ public class DBManager {
     }
 
     // Grape Varieties CRUD
-    protected String insertVarietyGrape(String name, Double amountLiquid, Double availableQuantity, Integer category_id, String date) throws SQLException {
+    public String insertVarietyGrape(String name, Double amountLiquid, Double availableQuantity, Integer category_id, String date) throws SQLException {
 
         PreparedStatement pstmt1 = null;
         ResultSet rs = null;
@@ -158,7 +158,7 @@ public class DBManager {
         return "There is already registered Grape variety with that name. Try again!";
     }
 
-    protected String updateGrapeVariety(String name, Double quantity, Double amountLiquid, String date) throws SQLException {
+    public String updateGrapeVariety(String name, Double quantity, Double amountLiquid, String date) throws SQLException {
         ResultSet rs;
         String query;
         PreparedStatement pstmt1;
@@ -216,7 +216,7 @@ public class DBManager {
         return "The new variety of grape named " + name + " has been registered.";
     }
 
-    protected String deleteGrapeVariety(String name) throws SQLException {
+    public String deleteGrapeVariety(String name) throws SQLException {
         PreparedStatement pstmt1 = null;
 
         try {
@@ -235,7 +235,7 @@ public class DBManager {
         return "Successfully deletion of grape variety named - '" + name + "'!";
     }
 
-    protected ArrayList<String> getGrapeVarieties() throws SQLException {
+    public ArrayList<String> getGrapeVarieties() throws SQLException {
         try (Statement stmnt = connection.createStatement(); ResultSet rs = stmnt.executeQuery("select name from sort_grape");) {
             ArrayList<String> grapeVarieties = new ArrayList<>();
             while (rs.next()) {
@@ -245,7 +245,7 @@ public class DBManager {
         }
     }
 
-    protected String getCurrentAmountOfLiquid(String name) throws SQLException {
+    public String getCurrentAmountOfLiquid(String name) throws SQLException {
         ResultSet rs;
         String query;
         PreparedStatement pstmt1;
@@ -322,7 +322,7 @@ public class DBManager {
         return rs.getInt("capacity_ml");
     }
 
-    protected String insertBottleType(Integer capacity, Double availableQuantity, String date) throws SQLException {
+    public String insertBottleType(Integer capacity, Double availableQuantity, String date) throws SQLException {
 
         PreparedStatement pstmt1 = null;
         PreparedStatement pstmt2 = null;
@@ -341,7 +341,7 @@ public class DBManager {
         return "There is already registered Bottle Type with that capacity. Try again!";
     }
 
-    protected String updateBottleType(Integer capacity, Integer quantity, String date) throws SQLException {
+    public String updateBottleType(Integer capacity, Integer quantity, String date) throws SQLException {
         String query;
         PreparedStatement pstmt1;
         ResultSet rs;
@@ -393,7 +393,7 @@ public class DBManager {
         return "The new bottle type with capacity of " + capacity + "ml has been registered.";
     }
 
-    protected ArrayList<String> getBottleTypes() throws SQLException {
+    public ArrayList<String> getBottleTypes() throws SQLException {
         try (
                 Statement stmnt = connection.createStatement();
                 ResultSet rs = stmnt.executeQuery("select capacity_ml from bottle");
@@ -406,7 +406,7 @@ public class DBManager {
         }
     }
 
-    protected String deleteBottleType(String capacity_ml) throws SQLException {
+    public String deleteBottleType(String capacity_ml) throws SQLException {
         PreparedStatement pstmt1 = null;
         try {
             String query = "DELETE FROM bottle WHERE capacity_ml=?";
@@ -495,7 +495,7 @@ public class DBManager {
         return rs.getString("name");
     }
 
-    protected ArrayList<String> getWineTypesWithNoRecipe() throws SQLException {
+    public ArrayList<String> getWineTypesWithNoRecipe() throws SQLException {
         ResultSet rs1, rs2;
         String query1, query2;
         PreparedStatement pstmt1;
@@ -521,7 +521,7 @@ public class DBManager {
         return resultList;
     }
 
-    protected ArrayList<String> getWineTypesWithRecipe() throws SQLException {
+    public ArrayList<String> getWineTypesWithRecipe() throws SQLException {
         ResultSet rs1, rs2;
         String query1, query2;
         PreparedStatement pstmt1;
@@ -547,7 +547,7 @@ public class DBManager {
         return resultList;
     }
 
-    protected String registerWineRecipe(String wineName, ArrayList<String> rows) throws SQLException {
+    public String registerWineRecipe(String wineName, ArrayList<String> rows) throws SQLException {
         PreparedStatement pstmt2;
         for (String row : rows) {
             String[] arrOfString = row.split("\t\t");
@@ -560,14 +560,14 @@ public class DBManager {
         return "The new recipe for wine named" + wineName + " has been registered.";
     }
 
-    protected String registerWineType(String name, Integer quantity) throws SQLException {
+    public String registerWineType(String name, Integer quantity) throws SQLException {
         PreparedStatement pstmt2;
         pstmt2 = connection.prepareStatement("INSERT INTO wine_production.wine_type (name,obtained_quantity) VALUES('" + name + "'," + quantity + ");");
         pstmt2.executeUpdate();
         return "The new wine type named " + name + " has been registered.";
     }
 
-    protected String deleteWineType(String name) throws SQLException {
+    public String deleteWineType(String name) throws SQLException {
         PreparedStatement pstmt1 = null;
         String query = "";
 
@@ -606,7 +606,7 @@ public class DBManager {
         return "Something went wrong with the deletion";
     }
 
-    protected String deleteWineRecipe(String name) throws SQLException {
+    public String deleteWineRecipe(String name) throws SQLException {
         PreparedStatement pstmt1 = null;
         String query = "";
 
@@ -619,7 +619,7 @@ public class DBManager {
         return "The recipe for " + name + " has been successfully deleted.";
     }
 
-    protected String updateWineType(String name, Double new_qty) throws SQLException {
+    public String updateWineType(String name, Double new_qty) throws SQLException {
         String query;
         PreparedStatement pstmt1;
         ResultSet rs;
@@ -706,7 +706,7 @@ public class DBManager {
         }
     }
 
-    protected String produceWine(String wineName, int doses) throws SQLException {
+    public String produceWine(String wineName, int doses) throws SQLException {
         // get the recipe with all ingredients
         HashMap<String, Integer> ingredients = this.getRecipeIngredients(wineName);
         HashMap<String, Integer> ingredientsNewQuantities = new HashMap<>();
@@ -737,7 +737,7 @@ public class DBManager {
         return result;
     }
 
-    protected ArrayList<String> getProducedWineTypes() throws SQLException {
+    public ArrayList<String> getProducedWineTypes() throws SQLException {
         try (Statement stmnt = connection.createStatement();
              ResultSet rs = stmnt.executeQuery("select name from produced_wine;");) {
             ArrayList<String> grapeVarieties = new ArrayList<>();
@@ -748,7 +748,7 @@ public class DBManager {
         }
     }
 
-    protected String bottleWine(String wineName, Double qty, String date) throws SQLException {
+    public String bottleWine(String wineName, Double qty, String date) throws SQLException {
         PreparedStatement pstmt1 = null;
         ResultSet rs = null;
 
@@ -1150,7 +1150,7 @@ public class DBManager {
 
 
     // Check for critical minimum alerts
-    protected ArrayList<String> grapeCriticalMinimumAlert(Integer critical_minimum) throws SQLException {
+    public ArrayList<String> grapeCriticalMinimumAlert(Integer critical_minimum) throws SQLException {
         ResultSet rs;
         String query;
         PreparedStatement pstmt1;
@@ -1170,7 +1170,7 @@ public class DBManager {
         return resultList;
     }
 
-    protected ArrayList<String> bottleTypeCriticalMinimumAlert(Integer critical_minimum) throws SQLException {
+    public ArrayList<String> bottleTypeCriticalMinimumAlert(Integer critical_minimum) throws SQLException {
         ResultSet rs;
         String query;
         PreparedStatement pstmt1;

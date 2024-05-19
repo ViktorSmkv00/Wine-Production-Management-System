@@ -1,5 +1,7 @@
-package com.example.wineproductionproject_2;
+package com.example.wineproductionproject_2.StorageHost;
 
+import com.example.wineproductionproject_2.DBManager;
+import com.example.wineproductionproject_2.WineLogger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,56 +10,58 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class StorageUpdateGrapeSceneController implements Initializable {
+public class StorageRegisterGrapeSceneController implements Initializable {
+    @FXML
+    private Button button_addSortGrape, button_back;
+
     @FXML
     private Label label_result;
+
     @FXML
-    private TextField tf_qty, tf_amountLiquid;
+    private TextField tf_availableQuantity, tf_amountLiquid, tf_sortName;
+
     @FXML
-    private ChoiceBox<String> cb_grapeVariety;
-    @FXML
-    private Button button_update, button_back;
+    private RadioButton rb_white, rb_black;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        prepareChoiceBoxOptions(cb_grapeVariety);
-        button_update.setOnAction(new EventHandler<ActionEvent>() {
+
+        rb_white.setSelected(true);
+
+        button_addSortGrape.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (cb_grapeVariety.getValue() == null) {
-                    label_result.setText("Choose a grape variety from the options! Please, try again!");
+
+                if (tf_sortName.getText().trim().isEmpty()) {
+                    label_result.setText("The field for name is empty! Please, try again!");
                     return;
                 }
+                String name = tf_sortName.getText();
 
-                double quantity, amountLiquid = 0;
+                double quantity, amountLiquid;
                 try {
-                    if (tf_qty.getText().trim().isEmpty()) {
-                        tf_qty.setText("0");
-                    }
-                    quantity = Double.parseDouble(tf_qty.getText());
+                    quantity = Double.parseDouble(tf_availableQuantity.getText());
                 } catch (NumberFormatException e) {
-                    tf_qty.setText("");
+                    tf_availableQuantity.setText("");
                     label_result.setText("Invalid number for quantity! Please, try again!");
                     return;
                 }
                 try {
-                    if (tf_amountLiquid.getText().trim().isEmpty()) {
-                        tf_amountLiquid.setText(DBManager.getInstance().getCurrentAmountOfLiquid(cb_grapeVariety.getValue()));
-                    }
                     amountLiquid = Double.parseDouble(tf_amountLiquid.getText());
                 } catch (NumberFormatException e) {
                     tf_amountLiquid.setText("");
                     label_result.setText("Invalid number for amount of liquid! Please, try again!");
                     return;
-                } catch (SQLException | ClassNotFoundException e) {
-                    e.printStackTrace();
                 }
 
+                int category_id = 2;
+                if (rb_white.isSelected()) {
+                    category_id = 1;
+                }
                 LocalDateTime now = LocalDateTime.now();
                 String myFormatedDate = null;
 
@@ -68,10 +72,9 @@ public class StorageUpdateGrapeSceneController implements Initializable {
                 }
 
                 try {
-                    String result = DBManager.getInstance().updateGrapeVariety(cb_grapeVariety.getValue(), quantity, amountLiquid, myFormatedDate);
+                    String result = DBManager.getInstance().insertVarietyGrape(name, amountLiquid, quantity, category_id, myFormatedDate);
                     WineLogger.getLOGGER().info(result);
                     label_result.setText(result);
-                    prepareChoiceBoxOptions(cb_grapeVariety);
                 } catch (SQLException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -88,14 +91,6 @@ public class StorageUpdateGrapeSceneController implements Initializable {
                 }
             }
         });
-    }
 
-    private void prepareChoiceBoxOptions(ChoiceBox<String> cb) {
-        cb.getItems().clear();
-        try {
-            cb.getItems().addAll(DBManager.getInstance().getGrapeVarieties());
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
     }
 }

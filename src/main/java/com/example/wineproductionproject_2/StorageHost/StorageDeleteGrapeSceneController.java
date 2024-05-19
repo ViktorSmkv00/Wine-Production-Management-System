@@ -1,5 +1,7 @@
-package com.example.wineproductionproject_2;
+package com.example.wineproductionproject_2.StorageHost;
 
+import com.example.wineproductionproject_2.DBManager;
+import com.example.wineproductionproject_2.WineLogger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,29 +9,26 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class WineOperatorProduceWineSceneController implements Initializable {
-
-    @FXML
-    private Button button_back, button_produce;
+public class StorageDeleteGrapeSceneController implements Initializable {
 
     @FXML
     private Label label_result;
 
     @FXML
-    private ChoiceBox<String> cb_recipe;
+    private ChoiceBox<String> cb_grapeVariety;
 
     @FXML
-    private TextField tf_doses;
+    private Button button_back, button_delete;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        prepareChoiceBoxWineOptions(cb_recipe);
+        prepareChoiceBoxOptions();
         button_back.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -40,39 +39,30 @@ public class WineOperatorProduceWineSceneController implements Initializable {
                 }
             }
         });
-        button_produce.setOnAction(new EventHandler<ActionEvent>() {
+
+        button_delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                label_result.setText("");
-                int doses;
-                try {
-                    doses = Integer.parseInt(tf_doses.getText());
-                } catch (NumberFormatException e) {
-                    tf_doses.setText("");
-                    label_result.setText("Invalid number for doses count! Please, try again!");
+                if (cb_grapeVariety.getValue() == null) {
+                    label_result.setText("Choose a grape variety from the options! Please, try again!");
                     return;
                 }
-                if (cb_recipe.getValue() == null) {
-                    label_result.setText("Choose a recipe from the options! Please, try again!");
-                    return;
-                }
-
                 try {
-                    String result = DBManager.getInstance().produceWine(cb_recipe.getValue(), doses);
+                    String result = DBManager.getInstance().deleteGrapeVariety(cb_grapeVariety.getValue());
                     WineLogger.getLOGGER().info(result);
                     label_result.setText(result);
+                    prepareChoiceBoxOptions();
                 } catch (SQLException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
-
             }
         });
     }
 
-    private void prepareChoiceBoxWineOptions(ChoiceBox<String> cb) {
+    private void prepareChoiceBoxOptions() {
         try {
-            cb.getItems().clear();
-            cb.getItems().addAll(DBManager.getInstance().getWineTypesWithRecipe());
+            cb_grapeVariety.getItems().clear();
+            cb_grapeVariety.getItems().addAll(DBManager.getInstance().getGrapeVarieties());
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

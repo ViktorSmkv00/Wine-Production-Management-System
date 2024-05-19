@@ -1,5 +1,8 @@
 package com.example.wineproductionproject_2;
 
+import com.example.wineproductionproject_2.AlertBox;
+import com.example.wineproductionproject_2.DBManager;
+import com.example.wineproductionproject_2.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

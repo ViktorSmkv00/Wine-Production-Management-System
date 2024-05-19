@@ -1,5 +1,7 @@
-package com.example.wineproductionproject_2;
+package com.example.wineproductionproject_2.StorageHost;
 
+import com.example.wineproductionproject_2.DBManager;
+import com.example.wineproductionproject_2.WineLogger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,17 +14,15 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class StorageDeleteGrapeSceneController implements Initializable {
-
+public class StorageDeleteBottleSceneController implements Initializable {
     @FXML
     private Label label_result;
 
     @FXML
-    private ChoiceBox<String> cb_grapeVariety;
+    private ChoiceBox<String> choiceBox_bottleTypes;
 
     @FXML
     private Button button_back, button_delete;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -37,16 +37,15 @@ public class StorageDeleteGrapeSceneController implements Initializable {
                 }
             }
         });
-
         button_delete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (cb_grapeVariety.getValue() == null) {
-                    label_result.setText("Choose a grape variety from the options! Please, try again!");
+                if (choiceBox_bottleTypes.getValue() == null) {
+                    label_result.setText("Choose a bottle type from the options! Please, try again!");
                     return;
                 }
                 try {
-                    String result = DBManager.getInstance().deleteGrapeVariety(cb_grapeVariety.getValue());
+                    String result = DBManager.getInstance().deleteBottleType(choiceBox_bottleTypes.getValue());
                     WineLogger.getLOGGER().info(result);
                     label_result.setText(result);
                     prepareChoiceBoxOptions();
@@ -59,8 +58,8 @@ public class StorageDeleteGrapeSceneController implements Initializable {
 
     private void prepareChoiceBoxOptions() {
         try {
-            cb_grapeVariety.getItems().clear();
-            cb_grapeVariety.getItems().addAll(DBManager.getInstance().getGrapeVarieties());
+            choiceBox_bottleTypes.getItems().clear();
+            choiceBox_bottleTypes.getItems().addAll(DBManager.getInstance().getBottleTypes());
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

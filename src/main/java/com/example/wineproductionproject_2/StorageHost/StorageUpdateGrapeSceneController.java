@@ -1,5 +1,7 @@
-package com.example.wineproductionproject_2;
+package com.example.wineproductionproject_2.StorageHost;
 
+import com.example.wineproductionproject_2.DBManager;
+import com.example.wineproductionproject_2.WineLogger;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,36 +10,52 @@ import javafx.scene.control.*;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
-public class StorageUpdateBottleSceneController implements Initializable {
+public class StorageUpdateGrapeSceneController implements Initializable {
     @FXML
     private Label label_result;
     @FXML
-    private TextField tf_qty;
+    private TextField tf_qty, tf_amountLiquid;
     @FXML
-    private ChoiceBox<String> cb_bottleType;
+    private ChoiceBox<String> cb_grapeVariety;
     @FXML
     private Button button_update, button_back;
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        prepareChoiceBoxOptions();
+        prepareChoiceBoxOptions(cb_grapeVariety);
         button_update.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                if (cb_grapeVariety.getValue() == null) {
+                    label_result.setText("Choose a grape variety from the options! Please, try again!");
+                    return;
+                }
 
-                int qty;
+                double quantity, amountLiquid = 0;
                 try {
-                    qty = Integer.parseInt(tf_qty.getText());
+                    if (tf_qty.getText().trim().isEmpty()) {
+                        tf_qty.setText("0");
+                    }
+                    quantity = Double.parseDouble(tf_qty.getText());
                 } catch (NumberFormatException e) {
                     tf_qty.setText("");
                     label_result.setText("Invalid number for quantity! Please, try again!");
                     return;
+                }
+                try {
+                    if (tf_amountLiquid.getText().trim().isEmpty()) {
+                        tf_amountLiquid.setText(DBManager.getInstance().getCurrentAmountOfLiquid(cb_grapeVariety.getValue()));
+                    }
+                    amountLiquid = Double.parseDouble(tf_amountLiquid.getText());
+                } catch (NumberFormatException e) {
+                    tf_amountLiquid.setText("");
+                    label_result.setText("Invalid number for amount of liquid! Please, try again!");
+                    return;
+                } catch (SQLException | ClassNotFoundException e) {
+                    e.printStackTrace();
                 }
 
                 LocalDateTime now = LocalDateTime.now();
@@ -49,16 +67,11 @@ public class StorageUpdateBottleSceneController implements Initializable {
                     e.printStackTrace();
                 }
 
-                if (cb_bottleType.getValue() == null) {
-                    label_result.setText("Choose a bottle type from the options! Please, try again!");
-                    return;
-                }
-
                 try {
-                    String result = DBManager.getInstance().updateBottleType(Integer.parseInt(cb_bottleType.getValue()), qty, myFormatedDate);
+                    String result = DBManager.getInstance().updateGrapeVariety(cb_grapeVariety.getValue(), quantity, amountLiquid, myFormatedDate);
                     WineLogger.getLOGGER().info(result);
                     label_result.setText(result);
-                    prepareChoiceBoxOptions();
+                    prepareChoiceBoxOptions(cb_grapeVariety);
                 } catch (SQLException | ClassNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -77,11 +90,10 @@ public class StorageUpdateBottleSceneController implements Initializable {
         });
     }
 
-
-    private void prepareChoiceBoxOptions() {
+    private void prepareChoiceBoxOptions(ChoiceBox<String> cb) {
+        cb.getItems().clear();
         try {
-            cb_bottleType.getItems().clear();
-            cb_bottleType.getItems().addAll(DBManager.getInstance().getBottleTypes());
+            cb.getItems().addAll(DBManager.getInstance().getGrapeVarieties());
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
